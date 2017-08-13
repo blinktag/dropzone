@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  div.album(align="center")
+    each image in files
+      a(href="#{folder}/#{image}")
+        img(src="#{folder}/#{image}")
