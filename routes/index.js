@@ -9,7 +9,7 @@ const uuid = require('uuid/v4');
 const uploadPath = path.resolve(__dirname + '/../uploads/');
 
 // Displays the upload form
-router.get('/', function(req, res, next) {
+router.get('/', (req, res, next) => {
   res.render('index', { title: 'Dropzone Image Sharing' });
 });
 
@@ -27,7 +27,7 @@ function generateFolderId() {
 
 
 // Handle storage of uploaded files
-router.post('/upload', function(req, res, next) {
+router.post('/upload', (req, res, next) => {
   let error = false;
   let fileCount = 1;
   const form = new formidable.IncomingForm();
@@ -46,7 +46,7 @@ router.post('/upload', function(req, res, next) {
 });
 
 // Return a single file
-router.get('/:uuid', function(req, res, next) {
+router.get('/:uuid', (req, res, next) => {
   const folder = req.params.uuid;
   const folderLocation = path.join(uploadPath, folder);
   if (!fs.existsSync(folderLocation)) {
@@ -60,7 +60,7 @@ router.get('/:uuid', function(req, res, next) {
   });
 });
 
-router.get('/:uuid/:file', function(req, res, next) {
+router.get('/:uuid/:file', (req, res, next) => {
   const folder = req.params.uuid;
   const fileName = req.params.file;
 
